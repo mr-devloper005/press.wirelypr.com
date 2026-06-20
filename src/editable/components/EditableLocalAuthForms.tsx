@@ -31,8 +31,8 @@ const saveSession = (user: Pick<LocalUser, 'name' | 'email'>) => {
   window.dispatchEvent(new Event('slot4-auth-change'))
 }
 
-const inputClass = 'h-[3.25rem] border border-black bg-white px-4 text-base font-bold text-black outline-none transition placeholder:text-black/35 focus:border-[#c92f2f]'
-const buttonClass = 'inline-flex h-[3.25rem] items-center justify-center border border-black bg-black px-6 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:bg-[#c92f2f] disabled:opacity-60'
+const inputClass = 'h-[3.25rem] rounded-full border border-[#c7d0dc] bg-[#f6f8fb] px-5 text-base font-bold text-[var(--slot4-page-text)] outline-none transition placeholder:text-[var(--slot4-soft-muted-text)] focus:border-[var(--slot4-accent)]'
+const buttonClass = 'inline-flex h-[3.25rem] items-center justify-center rounded-full bg-[var(--slot4-dark-bg)] px-6 text-sm font-black text-white transition hover:bg-[var(--slot4-accent)] disabled:opacity-60'
 
 export function EditableLocalLoginForm() {
   const router = useRouter()
@@ -44,13 +44,21 @@ export function EditableLocalLoginForm() {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const normalizedEmail = email.trim().toLowerCase()
-    const user = readUsers().find((item) => item.email.toLowerCase() === normalizedEmail)
-    if (!user || user.password !== password) {
+    const users = readUsers()
+    const user = users.find((item) => item.email.toLowerCase() === normalizedEmail)
+    if (user && user.password !== password) {
       setStatus('error')
-      setMessage(pagesContent.auth.login.noAccount)
+      setMessage('The password does not match this account.')
       return
     }
-    saveSession(user)
+    const nextUser: LocalUser = user || {
+      name: normalizedEmail.split('@')[0] || 'Member',
+      email: normalizedEmail,
+      password,
+      createdAt: new Date().toISOString(),
+    }
+    if (!user) saveUsers([nextUser, ...users])
+    saveSession(nextUser)
     setStatus('success')
     setMessage(pagesContent.auth.login.success)
     window.setTimeout(() => router.push('/'), 500)
