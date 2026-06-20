@@ -1,23 +1,26 @@
 import type { CSSProperties } from 'react'
 
 export const editableRootStyle = {
-  '--slot4-page-bg': '#f7f4ef',
-  '--slot4-page-text': '#111111',
-  '--slot4-panel-bg': '#efeae3',
-  '--slot4-surface-bg': '#fffdfa',
-  '--slot4-muted-text': '#514e49',
-  '--slot4-soft-muted-text': '#77716a',
-  '--slot4-accent': '#c92f2f',
-  '--slot4-accent-fill': '#c92f2f',
-  '--slot4-accent-soft': '#f3d8d3',
-  '--slot4-dark-bg': '#111111',
+  '--slot4-page-bg': '#ffffff',
+  '--slot4-page-text': '#282a31',
+  '--slot4-panel-bg': '#eef1f4',
+  '--slot4-surface-bg': '#ffffff',
+  '--slot4-muted-text': '#5f6877',
+  '--slot4-soft-muted-text': '#7a8391',
+  '--slot4-accent': '#3164e0',
+  '--slot4-accent-fill': '#3164e0',
+  '--slot4-accent-soft': '#d7f5e9',
+  '--slot4-dark-bg': '#272a31',
   '--slot4-dark-text': '#ffffff',
-  '--slot4-media-bg': '#e4e0da',
-  '--slot4-cream': '#f7f4ef',
-  '--slot4-warm': '#fffdfa',
-  '--slot4-lavender': '#c92f2f',
-  '--slot4-gray': '#ece9e4',
-  '--slot4-body-gradient': 'linear-gradient(180deg, #f7f4ef 0%, #fffdfa 52%, #eeeae4 100%)',
+  '--slot4-media-bg': '#eef1f4',
+  '--slot4-cream': '#f4fbf7',
+  '--slot4-warm': '#ffffff',
+  '--slot4-lavender': '#d7e7ff',
+  '--slot4-gray': '#eef1f4',
+  '--slot4-green': '#d5f6e9',
+  '--slot4-orange': '#f04f2f',
+  '--slot4-yellow': '#f7d547',
+  '--slot4-body-gradient': 'linear-gradient(180deg, #ffffff 0%, #ffffff 48%, #f6f8fb 100%)',
 } as CSSProperties
 
 export const editablePalette = {
@@ -50,8 +53,8 @@ export const editablePalette = {
 export const editableDesignContract = {
   shell: {
     page: `min-h-screen ${editablePalette.pageBg} ${editablePalette.pageText}`,
-    section: 'mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10',
-    sectionY: 'py-12 sm:py-16 lg:py-20',
+    section: 'mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8',
+    sectionY: 'py-14 sm:py-20 lg:py-24',
   },
   layout: {
     safeGrid: 'grid gap-px bg-black/15 md:grid-cols-2 xl:grid-cols-3',
@@ -61,7 +64,7 @@ export const editableDesignContract = {
   },
   type: {
     eyebrow: 'text-[11px] font-black uppercase tracking-[0.2em]',
-    heroTitle: 'text-4xl font-black leading-[0.94] tracking-[-0.055em] sm:text-6xl lg:text-[5.4rem]',
+    heroTitle: 'text-5xl font-black leading-[0.98] tracking-[-0.045em] sm:text-6xl lg:text-[4.9rem]',
     sectionTitle: 'text-3xl font-black leading-none tracking-[-0.045em] sm:text-4xl',
     body: 'text-base leading-8',
   },
@@ -71,9 +74,9 @@ export const editableDesignContract = {
     dark: `${editablePalette.darkBg} ${editablePalette.darkText}`,
   },
   button: {
-    primary: `inline-flex items-center justify-center gap-2 bg-[var(--slot4-dark-bg)] px-7 py-3.5 text-xs font-black uppercase tracking-[0.12em] text-white transition hover:bg-[var(--slot4-accent-fill)]`,
-    secondary: `inline-flex items-center justify-center gap-2 border border-black/30 bg-transparent px-7 py-3.5 text-xs font-black uppercase tracking-[0.12em] text-black transition hover:bg-black hover:text-white`,
-    accent: `inline-flex items-center justify-center gap-2 bg-[var(--slot4-accent-fill)] px-7 py-3.5 text-xs font-black uppercase tracking-[0.12em] text-white transition hover:bg-black`,
+    primary: `inline-flex items-center justify-center gap-2 rounded-full bg-[var(--slot4-dark-bg)] px-7 py-3.5 text-sm font-black text-white transition hover:bg-[var(--slot4-accent-fill)]`,
+    secondary: `inline-flex items-center justify-center gap-2 rounded-full border-2 border-[var(--slot4-dark-bg)] bg-transparent px-7 py-3.5 text-sm font-black text-[var(--slot4-dark-bg)] transition hover:bg-[var(--slot4-dark-bg)] hover:text-white`,
+    accent: `inline-flex items-center justify-center gap-2 rounded-full bg-[var(--slot4-accent-fill)] px-7 py-3.5 text-sm font-black text-white transition hover:bg-[var(--slot4-dark-bg)]`,
   },
   media: {
     frame: `relative overflow-hidden ${editablePalette.mediaBg}`,
@@ -87,7 +90,7 @@ export const editableDesignContract = {
 
 export const aiLayoutRules = [
   'All visible layout decisions belong inside src/editable; keep data, SEO, API, and route logic untouched.',
-  'Use a publication-style white masthead, black category navigation, red editorial accents, and sharp image-led grids.',
+  'Use a white product-style masthead, blue announcement bar, mint hero panels, rounded cards, and spacious magazine sections.',
   'Keep dynamic post fetching intact and never replace backend posts with mock arrays.',
   'Use postHref() for all post links so route aliases and task-specific detail pages remain functional.',
   'Prioritize readable desktop and mobile layouts with broad story columns and a focused long-form article measure.',
